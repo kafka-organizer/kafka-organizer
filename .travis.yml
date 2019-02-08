@@ -23,6 +23,7 @@ jobs:
       script:
         # Run tests
         - yarn test:unit
+        - yarn test:e2e
     - stage: build
       script:
         - yarn build
