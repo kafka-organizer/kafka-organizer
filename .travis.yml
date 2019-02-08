@@ -4,20 +4,15 @@ node_js:
   - "10"
 install:
   - yarn
-addons:
-  chrome: stable
-before_install:
-  - # start your web application and listen on `localhost`
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-#before_script:
-#  # Install Webpack version
-#  - if [[ -n "$WEBPACK_VERSION" ]]; then npm install --no-save webpack@$WEBPACK_VERSION; fi
-#branches:
-#  except:
-#    - gh-pages
+  - yarn global cypress
+cache:
+  directories:
+    - ~/.npm
+    - node_modules
 stages:
   - lint
-  - test
+  - unitTests
+  - e2eTests
   - build
 jobs:
   include:
@@ -25,11 +20,16 @@ jobs:
       script:
         # Run linter
         - yarn lint
-    - stage: test
+    - stage: unitTests
       script:
         # Run tests
         - yarn test:unit
-        - yarn test:e2e
+    - stage: e2eTests
+      script:
+        # Run tests
+        - yarn serve
+        - sleep 30
+        - cypress run --record --config baseUrl=http://localhost:8080/
     - stage: build
       script:
         - yarn build
