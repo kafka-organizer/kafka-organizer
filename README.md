@@ -1,2 +1,2 @@
-# kafka-managment
+# kafka-organizer
 Managment UI for Kafka
