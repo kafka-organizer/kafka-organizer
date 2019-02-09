@@ -1,0 +1,35 @@
+dist: trusty
+language: node_js
+node_js:
+  - "10"
+install:
+  - yarn
+  - yarn global add cypress
+cache:
+  directories:
+    - ~/.npm
+    - node_modules
+stages:
+  - lint
+  - unitTests
+  - e2eTests
+  - build
+jobs:
+  include:
+    - stage: lint
+      script:
+        # Run linter
+        - yarn lint
+    - stage: unitTests
+      script:
+        # Run tests
+        - yarn test:unit
+    - stage: e2eTests
+      script:
+        # Run tests
+        - yarn serve
+        - sleep 30
+        - cypress run --record --config baseUrl=http://localhost:8080/
+    - stage: build
+      script:
+        - yarn build
