@@ -1,0 +1,32 @@
+{
+  "name": "kafka-organizer",
+  "version": "0.0.0",
+  "description": "Managment UI for Kafka",
+  "main": "bin/src/Server.js",
+  "scripts": {
+    "compile": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kafka-organizer/kafka-organizer.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kafka-organizer/kafka-organizer/issues"
+  },
+  "homepage": "https://github.com/kafka-organizer/kafka-organizer#readme",
+  "devDependencies": {
+    "@types/node": "^10.12.23",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.12.1",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "tslib": "^1.9.3"
+  },
+  "engines": {
+    "node": ">= 8.0.0"
+  }
+}
